@@ -31,10 +31,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Get repository name and set base path
+        id: repo
+        run: |
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          # If repository is username.github.io format, use root path
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "base_path=/" >> $GITHUB_OUTPUT
+          else
+            echo "base_path=/$REPO_NAME/" >> $GITHUB_OUTPUT
+          fi
+          echo "Repository: $REPO_NAME"
+          echo "Base path: $(cat $GITHUB_OUTPUT | grep base_path | cut -d'=' -f2)"
+
       - name: Build
         run: npm run build
         env:
-          BASE_PATH: /
+          BASE_PATH: ${{ steps.repo.outputs.base_path }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
