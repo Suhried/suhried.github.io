@@ -4,11 +4,11 @@ import profileImage from '../../../assets/profile.jpg';
 export default function NewHeroSection() {
 
   return (
-    <div className="h-auto md:h-full md:flex md:items-center pt-4 md:pt-24 pb-8 md:pb-0 px-6 md:pl-16 md:pr-0 bg-gradient-to-br from-[#0B0B0B] to-[#121212]">
-      <div className="w-full max-w-[400px] mx-auto md:mx-0">
+    <div className="h-auto md:h-full md:flex md:items-center pt-4 md:pt-24 pb-8 md:pb-0 px-6 md:pl-16 md:pr-0">
+      <div className="w-full max-w-[450px] mx-auto md:mx-0">
         {/* Profile Card */}
         <div
-          className="bg-white rounded-3xl p-5 md:p-8 w-full max-w-[380px] mx-auto shadow-2xl animate-fade-in"
+          className="bg-white rounded-3xl p-5 md:p-8 w-full max-w-[450px] mx-auto shadow-2xl animate-fade-in"
           style={{
             animation: 'fadeSlideUp 1s ease-out forwards',
           }}
@@ -77,7 +77,7 @@ export default function NewHeroSection() {
               <i className="ri-whatsapp-fill text-xl" style={{ color: '#F36A2F' }}></i>
             </a>
             <a
-              href="mailto:suhried@email.com"
+              href="mailto:suhried@gmail.com"
               className="w-12 h-12 flex items-center justify-center border border-black rounded-full hover:bg-[#F36A2F] hover:border-[#F36A2F] hover:scale-110 transition-all duration-300 cursor-pointer bg-white"
               aria-label="Gmail"
             >

@@ -34,7 +34,7 @@ export default function HeroContentSection() {
   }, []);
 
   return (
-    <div id="home" className="min-h-screen flex items-start pt-16 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-[#0B0B0B] to-[#121212]">
+    <div id="home" className="flex items-start pt-8 md:pt-12 pb-12 md:pb-20">
       <div className="w-full max-w-7xl mx-auto px-6 md:pl-8 md:pr-12">
         {/* Main Headline */}
         <div className="mb-8">
@@ -42,8 +42,10 @@ export default function HeroContentSection() {
             className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-6"
             style={{ letterSpacing: '-0.02em' }}
           >
-            DEVOPS &<br />
-            <span className="text-gradient">CLOUD ARCHITECT</span>
+            <span className="text-white">DEVOPS &</span>
+            <br />
+            <span className="text-white">CLOUD</span>{' '}
+            <span className="text-[#353334]">ARCHITECT</span>
           </h1>
           <p className="text-sm md:text-xl text-[#9A9A9A] leading-relaxed max-w-[500px] mb-6">
             Building scalable Kubernetes platforms, automating <br />

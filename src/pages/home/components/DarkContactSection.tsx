@@ -21,7 +21,7 @@ export default function DarkContactSection() {
               
               <div className="space-y-4">
                 <a
-                  href="mailto:suhried@email.com"
+                  href="mailto:suhried@gmail.com"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                 >
                   <div className="w-12 h-12 flex items-center justify-center border border-gray-700 rounded-full group-hover:border-[#F36A2F] group-hover:bg-[#F36A2F] transition-all duration-300">
@@ -29,7 +29,7 @@ export default function DarkContactSection() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
-                    <p className="text-base font-medium">suhried@email.com</p>
+                    <p className="text-base font-medium">suhried@gmail.com</p>
                   </div>
                 </a>
 
@@ -89,7 +89,7 @@ export default function DarkContactSection() {
               automate CI/CD pipelines, or scale Kubernetes platforms? Let's discuss how I can help.
             </p>
             <a
-              href="mailto:suhried@email.com?subject=Hire%20Me%20-%20DevOps%20Opportunity"
+              href="mailto:suhried@gmail.com?subject=Hire%20Me%20-%20DevOps%20Opportunity"
               className="inline-block px-8 py-4 bg-[#F36A2F] text-white font-semibold rounded-lg hover:bg-[#ff7a3f] transition-colors cursor-pointer text-center"
             >
               Hire Me

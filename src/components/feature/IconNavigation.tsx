@@ -125,14 +125,86 @@ export default function IconNavigation({ scrollContainerRef }: IconNavigationPro
         return;
       }
 
-      const element = document.querySelector(`#${sectionId}`);
+      const element = document.querySelector(`#${sectionId}`) as HTMLElement;
       if (element && scrollContainer) {
-        const containerRect = scrollContainer.getBoundingClientRect();
-        const elementRect = element.getBoundingClientRect();
-        const scrollTop = scrollContainer.scrollTop;
-        const targetScroll = scrollTop + elementRect.top - containerRect.top - 50;
+        const containerContent = scrollContainer.firstElementChild as HTMLElement;
+        if (!containerContent) return;
         
-        scrollContainer.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+        // Step 3: Manual calculation by summing heights of previous sections
+        const sectionWrapper = element.closest('.scroll-reveal-section') as HTMLElement;
+        if (!sectionWrapper) return;
+        
+        // Get all scroll-reveal-section children of containerContent
+        const allSections = Array.from(containerContent.children) as HTMLElement[];
+        
+        // Sum heights of all sections before target section
+        let cumulativeHeight = 0;
+        for (const section of allSections) {
+          if (section === sectionWrapper) break;
+          cumulativeHeight += section.offsetHeight;
+        }
+        
+        // The element (section) is the first child inside wrapper typically
+        // wrapperOffset should equal cumulativeHeight
+        const wrapperOffset = sectionWrapper.offsetTop;
+        
+        // Use wrapper's offsetTop if available, otherwise use cumulative height
+        const sectionPosition = wrapperOffset || cumulativeHeight;
+        
+        // Container has pt-8 md:pt-10 = 40px padding on desktop
+        // Home section at scrollTop 0: visually shows content at 40px (container padding) + 48px (home padding) = 88px from container top
+        // Other sections have py-12 md:py-20 = 80px top padding
+        // To align section's content (which starts at section top + 80px) at same visual position as home (88px):
+        // Visual position of section content = scrollTop + containerPadding + sectionPosition + sectionPadding
+        // We want: scrollTop + 40px + sectionPosition + 80px = 88px
+        // Therefore: scrollTop = 88px - 40px - sectionPosition - 80px = -32px - sectionPosition (always negative!)
+        // This means we can't align it this way.
+        
+        // Alternative: Align section's top edge visually where home's content starts (88px)
+        // scrollTop + 40px + sectionPosition = 88px
+        // scrollTop = 48px - sectionPosition
+        // But for sections after home, sectionPosition > 0, so scrollTop < 48px, which is too small
+        
+        // Better approach: Align section's content visually at same position as home's content
+        // scrollTop + containerPadding + sectionPosition + sectionTopPadding = homeContentStart
+        // scrollTop = homeContentStart - containerPadding - sectionPosition - sectionTopPadding
+        const containerPadding = 40; // md:pt-10 = 40px
+        const homePadding = 48; // md:pt-12 = 48px
+        const homeContentStart = containerPadding + homePadding; // 88px
+        const sectionTopPadding = 80; // md:py-20 = 80px
+        
+        // scrollTop = 88 - 40 - sectionPosition - 80 = -32 - sectionPosition (wrong!)
+        // Let me recalculate: we want the section's top padding area to align with container padding + home padding area
+        // Actually, we want section's CONTENT (not padding) to align with home's CONTENT
+        // Section content starts at: sectionPosition + sectionTopPadding from containerContent top
+        // Home content starts at: 0 + homePadding = 48px from containerContent top
+        // When home is at scrollTop 0, home content is visually at: containerPadding (40px) + homePadding (48px) = 88px from container top
+        // To align section content at same visual position:
+        // scrollTop + containerPadding + sectionPosition + sectionTopPadding = 88px
+        // scrollTop = 88px - 40px - sectionPosition - 80px = -32px - sectionPosition
+        // This will always be negative for sections after home, which means we can't align content this way.
+        
+        // Instead, align section's top edge where home content starts:
+        // scrollTop + containerPadding + sectionPosition = homeContentStart
+        // scrollTop = 88px - 40px - sectionPosition = 48px - sectionPosition
+        // But for sections, sectionPosition is large (e.g., 1000px), so this would be negative
+        
+        // Correct approach: When scrollTop = 0, home's content is at 88px visual position
+        // For section, we want its content at 88px visual position
+        // section content position in container = sectionPosition + sectionTopPadding
+        // visual position = scrollTop + containerPadding + sectionPosition + sectionTopPadding
+        // We want: scrollTop + 40 + sectionPosition + 80 = 88
+        // scrollTop = 88 - 40 - sectionPosition - 80 = -32 - sectionPosition (negative!)
+        
+        // The issue is sections have MORE padding than home, so we can't align content this way
+        // Instead, let's align the section's top edge with where home's content starts, accounting for padding difference
+        // We want section's content to visually appear where home's content is (at 88px)
+        // Since section has 80px padding vs home's 48px, we have 32px extra padding
+        // So we need to scroll section up by 32px more than if they had same padding
+        const paddingDifference = sectionTopPadding - homePadding; // 32px
+        const targetScroll = Math.max(0, sectionPosition - containerPadding - paddingDifference);
+        
+        scrollContainer.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
     }
   };

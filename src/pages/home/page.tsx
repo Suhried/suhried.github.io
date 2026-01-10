@@ -17,10 +17,13 @@ export default function HomePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!scrollContainerRef.current) return;
-      
-      const sections = scrollContainerRef.current.querySelectorAll('.scroll-reveal-section');
+      const isMobile = window.innerWidth < 768;
       const windowHeight = window.innerHeight;
+      
+      // On mobile, query all sections from document; on desktop, use container
+      const sections = isMobile 
+        ? document.querySelectorAll('.scroll-reveal-section')
+        : scrollContainerRef.current?.querySelectorAll('.scroll-reveal-section') || [];
 
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
@@ -69,21 +72,65 @@ export default function HomePage() {
           <NewHeroSection />
         </div>
 
-        {/* DESKTOP: FIXED PROFILE BANNER - LEFT SIDE */}
-        <div className="hidden md:block md:fixed md:top-0 md:left-[5%] md:w-[38%] md:h-screen md:z-30 md:overflow-hidden">
-          <NewHeroSection />
+        {/* DESKTOP: CENTERED CONTAINER WITH TWO COLUMNS */}
+        <div className="hidden md:block md:fixed md:inset-0 md:z-30 md:overflow-hidden">
+          <div className="w-full h-full flex items-start justify-center pt-12 md:pt-16">
+            <div className="w-full max-w-[1600px] h-screen flex items-start gap-2 md:gap-3 px-4 md:px-6">
+              {/* LEFT SIDE - PROFILE BANNER */}
+              <div className="flex-[0_0_42%] max-w-[700px] min-w-0 h-screen flex items-start justify-center flex-shrink-0 pt-0">
+                <div className="w-full max-w-[450px] flex items-start overflow-visible">
+                  <NewHeroSection />
+                </div>
+              </div>
+
+              {/* RIGHT SIDE - SCROLLABLE CONTENT */}
+              <div 
+                ref={scrollContainerRef}
+                className="flex-[0_0_53%] max-w-[820px] min-w-0 h-screen overflow-y-auto overflow-x-hidden scroll-smooth flex-shrink-0 pt-0 -ml-4 md:-ml-6"
+                style={{
+                  scrollbarWidth: 'thin',
+                  scrollbarColor: '#F36A2F #1a1a1a',
+                }}
+              >
+                <div className="pt-8 md:pt-10 pb-32">
+                  {/* Hero Content Section - First visible section */}
+                  <div className="scroll-reveal-section">
+                    <HeroContentSection />
+                  </div>
+
+                  {/* Scrollable Sections */}
+                  <div className="scroll-reveal-section">
+                    <DarkProjectsSection />
+                  </div>
+                  
+                  <div className="scroll-reveal-section">
+                    <DarkExperienceSection />
+                  </div>
+                  
+                  <div className="scroll-reveal-section">
+                    <DarkToolsSection />
+                  </div>
+                  
+                  <div className="scroll-reveal-section">
+                    <DarkBlogSection />
+                  </div>
+                  
+                  <div className="scroll-reveal-section">
+                    <DarkContactSection />
+                  </div>
+                  
+                  <div className="scroll-reveal-section">
+                    <DarkFooter />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* SCROLLABLE CONTENT PANEL - RIGHT SIDE (DESKTOP) / BELOW BANNER (MOBILE) */}
-        <div 
-          ref={scrollContainerRef}
-          className="w-full md:fixed md:top-0 md:right-[4%] md:w-[57%] md:h-screen md:overflow-y-auto md:overflow-x-hidden scroll-smooth relative md:z-30 z-20"
-          style={{
-            scrollbarWidth: 'thin',
-            scrollbarColor: '#F36A2F #1a1a1a',
-          }}
-        >
-          <div className="min-h-screen pt-16 md:pt-16">
+        {/* MOBILE: SCROLLABLE CONTENT BELOW BANNER */}
+        <div className="md:hidden w-full overflow-y-auto overflow-x-hidden scroll-smooth relative z-20">
+          <div className="min-h-screen pt-8">
             {/* Hero Content Section - First visible section */}
             <div className="scroll-reveal-section">
               <HeroContentSection />
@@ -176,16 +223,6 @@ export default function HomePage() {
 
         /* Mobile Responsive */
         @media (max-width: 1024px) {
-          .fixed.w-\\[38\\%\\],
-          .fixed.w-\\[57\\%\\] {
-            position: relative !important;
-            width: 100% !important;
-            height: auto !important;
-            left: 0 !important;
-            right: 0 !important;
-            top: 0 !important;
-          }
-
           .scroll-reveal-section {
             transform: translateY(40px) !important;
           }
