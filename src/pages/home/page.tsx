@@ -77,7 +77,7 @@ export default function HomePage() {
           <div className="w-full h-full flex items-start justify-center pt-12 md:pt-16">
             <div className="w-full max-w-[1600px] h-screen flex items-start gap-2 md:gap-3 px-4 md:px-6">
               {/* LEFT SIDE - PROFILE BANNER */}
-              <div className="flex-[0_0_42%] max-w-[700px] min-w-0 h-screen flex items-start justify-center flex-shrink-0 pt-0">
+              <div className="flex-[0_0_42%] max-w-[700px] min-w-0 h-screen flex items-start justify-end flex-shrink-0 pt-0 pr-4 md:pr-6">
                 <div className="w-full max-w-[450px] flex items-start overflow-visible">
                   <NewHeroSection />
                 </div>
@@ -88,17 +88,21 @@ export default function HomePage() {
                 ref={scrollContainerRef}
                 className="flex-[0_0_53%] max-w-[820px] min-w-0 h-screen overflow-y-auto overflow-x-hidden scroll-smooth flex-shrink-0 pt-0 -ml-4 md:-ml-6"
                 style={{
-                  scrollbarWidth: 'thin',
-                  scrollbarColor: '#F36A2F #1a1a1a',
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
                 }}
               >
-                <div className="pt-8 md:pt-10 pb-32">
+                <div className="pt-8 md:pt-10 pb-32 pr-2">
                   {/* Hero Content Section - First visible section */}
                   <div className="scroll-reveal-section">
                     <HeroContentSection />
                   </div>
 
                   {/* Scrollable Sections */}
+                  <div className="scroll-reveal-section">
+                    <DarkBlogSection />
+                  </div>
+                  
                   <div className="scroll-reveal-section">
                     <DarkProjectsSection />
                   </div>
@@ -109,10 +113,6 @@ export default function HomePage() {
                   
                   <div className="scroll-reveal-section">
                     <DarkToolsSection />
-                  </div>
-                  
-                  <div className="scroll-reveal-section">
-                    <DarkBlogSection />
                   </div>
                   
                   <div className="scroll-reveal-section">
@@ -139,6 +139,10 @@ export default function HomePage() {
             {/* Scrollable Sections */}
             <div className="space-y-32 pb-32">
               <div className="scroll-reveal-section">
+                <DarkBlogSection />
+              </div>
+              
+              <div className="scroll-reveal-section">
                 <DarkProjectsSection />
               </div>
               
@@ -148,10 +152,6 @@ export default function HomePage() {
               
               <div className="scroll-reveal-section">
                 <DarkToolsSection />
-              </div>
-              
-              <div className="scroll-reveal-section">
-                <DarkBlogSection />
               </div>
               
               <div className="scroll-reveal-section">
@@ -167,22 +167,14 @@ export default function HomePage() {
       </div>
 
       <style>{`
-        /* Custom Scrollbar */
+        /* Hide Scrollbar */
         .overflow-y-auto::-webkit-scrollbar {
-          width: 8px;
+          display: none;
         }
 
-        .overflow-y-auto::-webkit-scrollbar-track {
-          background: #1a1a1a;
-        }
-
-        .overflow-y-auto::-webkit-scrollbar-thumb {
-          background: #F36A2F;
-          border-radius: 4px;
-        }
-
-        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-          background: #ff7a3f;
+        .overflow-y-auto {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
 
         /* Scroll Reveal Animation */

@@ -14,6 +14,7 @@ export default function IconNavigation({ scrollContainerRef }: IconNavigationPro
       
       const sections = [
         { id: 'home', offset: 0 },
+        { id: 'about', selector: '#about' },
         { id: 'projects', selector: '#projects' },
         { id: 'experience', selector: '#experience' },
         { id: 'tools', selector: '#tools' },
@@ -211,6 +212,7 @@ export default function IconNavigation({ scrollContainerRef }: IconNavigationPro
 
   const navItems = [
     { id: 'home', icon: 'ri-home-line', label: 'Home' },
+    { id: 'about', icon: 'ri-user-line', label: 'About' },
     { id: 'projects', icon: 'ri-folder-line', label: 'Projects' },
     { id: 'experience', icon: 'ri-briefcase-line', label: 'Experience' },
     { id: 'tools', icon: 'ri-tools-line', label: 'Tools' },

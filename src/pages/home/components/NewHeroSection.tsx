@@ -5,10 +5,10 @@ export default function NewHeroSection() {
 
   return (
     <div className="h-auto md:h-full md:flex md:items-center pt-4 md:pt-24 pb-8 md:pb-0 px-6 md:pl-16 md:pr-0">
-      <div className="w-full max-w-[450px] mx-auto md:mx-0">
+      <div className="w-full max-w-[320px] mx-auto md:mx-0">
         {/* Profile Card */}
         <div
-          className="bg-white rounded-3xl p-5 md:p-8 w-full max-w-[450px] mx-auto shadow-2xl animate-fade-in"
+          className="bg-white rounded-3xl p-5 md:p-8 w-full max-w-[320px] mx-auto shadow-2xl animate-fade-in"
           style={{
             animation: 'fadeSlideUp 1s ease-out forwards',
           }}
@@ -19,24 +19,8 @@ export default function NewHeroSection() {
             <img
               src={profileImage}
               alt="Suhried Datta"
-              className="w-full h-[400px] md:h-[420px] object-cover object-top relative z-0"
+              className="w-full h-[320px] md:h-[340px] object-cover object-top relative z-0"
             />
-            
-            {/* Decorative Dashed Line */}
-            <svg
-              className="absolute bottom-2 md:bottom-4 right-2 md:right-4 w-16 h-16 md:w-24 md:h-24 z-20"
-              viewBox="0 0 64 64"
-              fill="none"
-            >
-              <path
-                d="M 5 59 Q 32 25 59 5"
-                stroke="#F36A2F"
-                strokeWidth="3"
-                strokeDasharray="5 5"
-                fill="none"
-              />
-              <circle cx="59" cy="5" r="8" fill="#F36A2F" />
-            </svg>
           </div>
 
           {/* Name and Bio */}
@@ -53,35 +37,35 @@ export default function NewHeroSection() {
               href="https://github.com/suhried"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center border border-black rounded-full hover:bg-[#F36A2F] hover:border-[#F36A2F] hover:scale-110 transition-all duration-300 cursor-pointer bg-white"
+              className="social-icon-link w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-0 hover:border hover:border-[#F36A2F] hover:rounded-lg cursor-pointer group"
               aria-label="GitHub"
             >
-              <i className="ri-github-fill text-xl" style={{ color: '#F36A2F' }}></i>
+              <i className="ri-github-line text-xl md:text-2xl text-gray-800 group-hover:text-white transition-colors duration-300"></i>
             </a>
             <a
               href="https://linkedin.com/in/suhried"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center border border-black rounded-full hover:bg-[#F36A2F] hover:border-[#F36A2F] hover:scale-110 transition-all duration-300 cursor-pointer bg-white"
+              className="social-icon-link w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-0 hover:border hover:border-[#F36A2F] hover:rounded-lg cursor-pointer group"
               aria-label="LinkedIn"
             >
-              <i className="ri-linkedin-fill text-xl" style={{ color: '#F36A2F' }}></i>
+              <i className="ri-linkedin-line text-xl md:text-2xl text-gray-800 group-hover:text-white transition-colors duration-300"></i>
             </a>
             <a
               href="https://wa.me/+8801683323276"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center border border-black rounded-full hover:bg-[#F36A2F] hover:border-[#F36A2F] hover:scale-110 transition-all duration-300 cursor-pointer bg-white"
+              className="social-icon-link w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-0 hover:border hover:border-[#F36A2F] hover:rounded-lg cursor-pointer group"
               aria-label="WhatsApp"
             >
-              <i className="ri-whatsapp-fill text-xl" style={{ color: '#F36A2F' }}></i>
+              <i className="ri-whatsapp-line text-xl md:text-2xl text-gray-800 group-hover:text-white transition-colors duration-300"></i>
             </a>
             <a
               href="mailto:suhried@gmail.com"
-              className="w-12 h-12 flex items-center justify-center border border-black rounded-full hover:bg-[#F36A2F] hover:border-[#F36A2F] hover:scale-110 transition-all duration-300 cursor-pointer bg-white"
+              className="social-icon-link w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-0 hover:border hover:border-[#F36A2F] hover:rounded-lg cursor-pointer group"
               aria-label="Gmail"
             >
-              <i className="ri-mail-fill text-xl" style={{ color: '#F36A2F' }}></i>
+              <i className="ri-mail-line text-xl md:text-2xl text-gray-800 group-hover:text-white transition-colors duration-300"></i>
             </a>
           </div>
         </div>
@@ -97,6 +81,14 @@ export default function NewHeroSection() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+        
+        .social-icon-link {
+          transition: border 200ms ease-out, border-radius 200ms ease-out, background-color 200ms ease-out 150ms;
+        }
+        
+        .social-icon-link:hover {
+          background-color: #F36A2F;
         }
       `}</style>
     </div>

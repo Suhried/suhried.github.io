@@ -85,8 +85,8 @@ export default function TerminalLoader({ onComplete }: TerminalLoaderProps) {
           </div>
           
           {/* Terminal Content */}
-          <div className="p-6 font-mono text-sm flex-1 overflow-y-auto">
-            <div className="text-gray-400 mb-4">
+          <div className="p-6 font-mono text-sm flex-1 overflow-y-auto flex flex-col">
+            <div className="text-gray-400 mb-4 flex-1">
               {lines.map((line, index) => (
                 <div key={index} className="mb-2 flex items-center">
                   <span className="text-[#F36A2F] mr-2">$</span>
@@ -101,21 +101,19 @@ export default function TerminalLoader({ onComplete }: TerminalLoaderProps) {
               )}
             </div>
             
-            {/* Loading Indicator - Filling Pipe */}
-            {!isComplete && (
-              <div className="mt-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-gray-500 text-xs">Loading</span>
-                  <span className="text-gray-600 text-xs">[{Math.round(loadingProgress)}%]</span>
-                </div>
-                <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
-                  <div 
-                    className="h-full bg-gradient-to-r from-[#F36A2F] to-[#C8FF3D] transition-all duration-100 ease-linear rounded-full"
-                    style={{ width: `${loadingProgress}%` }}
-                  ></div>
-                </div>
+            {/* Loading Indicator - Fixed Position at Bottom */}
+            <div className="mt-auto pt-4 border-t border-gray-800">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-gray-500 text-xs">Loading</span>
+                <span className="text-gray-600 text-xs">[{Math.round(loadingProgress)}%]</span>
               </div>
-            )}
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
+                <div 
+                  className="h-full bg-gradient-to-r from-[#F36A2F] to-[#C8FF3D] transition-all duration-100 ease-linear rounded-full"
+                  style={{ width: `${loadingProgress}%` }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

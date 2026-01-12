@@ -24,8 +24,8 @@ export default function DarkContactSection() {
                   href="mailto:suhried@gmail.com"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center border border-gray-700 rounded-full group-hover:border-[#F36A2F] group-hover:bg-[#F36A2F] transition-all duration-300">
-                    <i className="ri-mail-fill text-xl" style={{ color: '#F36A2F' }}></i>
+                  <div className="social-icon-link w-12 h-12 flex items-center justify-center border-0 group-hover:border group-hover:border-[#F36A2F] group-hover:rounded-lg">
+                    <i className="ri-mail-line text-xl text-white group-hover:text-white transition-colors duration-300"></i>
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
@@ -39,8 +39,8 @@ export default function DarkContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center border border-gray-700 rounded-full group-hover:border-[#F36A2F] group-hover:bg-[#F36A2F] transition-all duration-300">
-                    <i className="ri-whatsapp-fill text-xl" style={{ color: '#F36A2F' }}></i>
+                  <div className="social-icon-link w-12 h-12 flex items-center justify-center border-0 group-hover:border group-hover:border-[#F36A2F] group-hover:rounded-lg">
+                    <i className="ri-whatsapp-line text-xl text-white group-hover:text-white transition-colors duration-300"></i>
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">WhatsApp</p>
@@ -54,8 +54,8 @@ export default function DarkContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center border border-gray-700 rounded-full group-hover:border-[#F36A2F] group-hover:bg-[#F36A2F] transition-all duration-300">
-                    <i className="ri-github-fill text-xl" style={{ color: '#F36A2F' }}></i>
+                  <div className="social-icon-link w-12 h-12 flex items-center justify-center border-0 group-hover:border group-hover:border-[#F36A2F] group-hover:rounded-lg">
+                    <i className="ri-github-line text-xl text-white group-hover:text-white transition-colors duration-300"></i>
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">GitHub</p>
@@ -69,8 +69,8 @@ export default function DarkContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center border border-gray-700 rounded-full group-hover:border-[#F36A2F] group-hover:bg-[#F36A2F] transition-all duration-300">
-                    <i className="ri-linkedin-fill text-xl" style={{ color: '#F36A2F' }}></i>
+                  <div className="social-icon-link w-12 h-12 flex items-center justify-center border-0 group-hover:border group-hover:border-[#F36A2F] group-hover:rounded-lg">
+                    <i className="ri-linkedin-line text-xl text-white group-hover:text-white transition-colors duration-300"></i>
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">LinkedIn</p>
@@ -90,13 +90,64 @@ export default function DarkContactSection() {
             </p>
             <a
               href="mailto:suhried@gmail.com?subject=Hire%20Me%20-%20DevOps%20Opportunity"
-              className="inline-block px-8 py-4 bg-[#F36A2F] text-white font-semibold rounded-lg hover:bg-[#ff7a3f] transition-colors cursor-pointer text-center"
+              className="hire-me-button inline-block px-8 py-4 bg-[#F36A2F] text-white font-semibold rounded-lg hover:bg-[#ff7a3f] transition-colors cursor-pointer text-center relative overflow-hidden"
             >
-              Hire Me
+              <span className="relative z-10">Hire Me</span>
             </a>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .social-icon-link {
+          transition: border 200ms ease-out, border-radius 200ms ease-out, background-color 200ms ease-out 150ms;
+        }
+        
+        .social-icon-link:hover,
+        .group:hover .social-icon-link {
+          background-color: #F36A2F;
+        }
+        
+        .hire-me-button {
+          animation: glowing-glow 5s ease-in-out infinite;
+          position: relative;
+        }
+        
+        .hire-me-button::before {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          right: -4px;
+          bottom: -4px;
+          background: linear-gradient(45deg, #F36A2F, #C8FF3D);
+          border-radius: 0.5rem;
+          z-index: -1;
+          opacity: 0.7;
+          animation: glowing-pulse 5s ease-in-out infinite;
+          filter: blur(12px);
+        }
+        
+        @keyframes glowing-pulse {
+          0%, 100% {
+            opacity: 0.6;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.9;
+            transform: scale(1.05);
+          }
+        }
+        
+        @keyframes glowing-glow {
+          0%, 100% {
+            box-shadow: 0 0 25px rgba(243, 106, 47, 0.7), 0 0 35px rgba(200, 255, 61, 0.5), 0 0 45px rgba(243, 106, 47, 0.3);
+          }
+          50% {
+            box-shadow: 0 0 35px rgba(200, 255, 61, 0.7), 0 0 45px rgba(243, 106, 47, 0.5), 0 0 55px rgba(200, 255, 61, 0.3);
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -45,18 +45,18 @@ export default function HeroContentSection() {
             <span className="text-white">DEVOPS &</span>
             <br />
             <span className="text-white">CLOUD</span>{' '}
-            <span className="text-[#353334]">ARCHITECT</span>
+            <span className="text-[#6A6A6A]">ARCHITECT</span>
           </h1>
           <p className="text-sm md:text-xl text-[#9A9A9A] leading-relaxed max-w-[500px] mb-6">
-            Building scalable Kubernetes platforms, automating <br />
-            and architecting cloud infrastructure at scale.
+            Building scalable platforms, automating and <br />
+            architecting cloud infrastructure at scale
           </p>
         </div>
 
         {/* Stats Row */}
         <div className="flex flex-row justify-start gap-4 md:gap-12 mb-12 overflow-x-auto">
           <div className="text-left flex-shrink-0">
-            <div className="text-4xl md:text-6xl font-black mb-2">+{yearsCount}</div>
+            <div className="text-4xl md:text-6xl font-black mb-2">{yearsCount}+</div>
             <div className="text-xs md:text-sm uppercase tracking-wider text-[#9A9A9A] leading-snug font-medium">
               YEARS<br />EXPERIENCE
             </div>

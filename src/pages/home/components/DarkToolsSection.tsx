@@ -65,16 +65,10 @@ export default function DarkToolsSection() {
               <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4">{category.description}</p>
               <div className="flex flex-wrap gap-2">
                 {category.tools.map((tool, toolIndex) => {
-                  // Alternate between orange and green, or use orange for first half, green for second
-                  const isOrange = toolIndex % 2 === 0;
-                  const bgColor = isOrange ? 'bg-[#F36A2F]/20' : 'bg-[#C8FF3D]/20';
-                  const textColor = isOrange ? 'text-[#F36A2F]' : 'text-[#C8FF3D]';
-                  const borderColor = isOrange ? 'border-[#F36A2F]/30' : 'border-[#C8FF3D]/30';
-                  
                   return (
                     <span
                       key={toolIndex}
-                      className={`px-3 py-1 ${bgColor} ${textColor} border ${borderColor} rounded-lg text-sm font-medium`}
+                      className="px-3 py-1 bg-gray-700/20 text-gray-400 border border-gray-600/30 rounded-lg text-sm font-medium"
                     >
                       {tool}
                     </span>
