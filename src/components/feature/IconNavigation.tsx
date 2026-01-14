@@ -27,22 +27,27 @@ export default function IconNavigation({ scrollContainerRef }: IconNavigationPro
       if (isMobile) {
         // On mobile, use window scroll position
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const viewportHeight = window.innerHeight;
+        const threshold = viewportHeight * 0.3; // 30% from top
         
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const section = sections[i];
-          if (section.selector) {
-            const element = document.querySelector(section.selector);
-            if (element) {
-              const rect = element.getBoundingClientRect();
-              
-              if (rect.top <= 300) {
-                currentSection = section.id;
-                break;
+        // Check home first
+        if (scrollTop < threshold) {
+          currentSection = 'home';
+        } else {
+          // Check sections from top to bottom, find the one closest to viewport top
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            if (section.selector) {
+              const element = document.querySelector(section.selector);
+              if (element) {
+                const rect = element.getBoundingClientRect();
+                // Section is active if its top is above the threshold
+                if (rect.top <= threshold) {
+                  currentSection = section.id;
+                  break;
+                }
               }
             }
-          } else if (scrollTop < 300) {
-            currentSection = 'home';
-            break;
           }
         }
       } else {
@@ -102,20 +107,35 @@ export default function IconNavigation({ scrollContainerRef }: IconNavigationPro
     const isMobile = window.innerWidth < 768;
     
     if (isMobile) {
-      // On mobile, scroll the window
+      // On mobile, use the same approach as desktop but with window scroll
       if (sectionId === 'home') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
 
-      const element = document.querySelector(`#${sectionId}`);
-      if (element) {
-        const elementRect = element.getBoundingClientRect();
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const targetScroll = scrollTop + elementRect.top - 20;
-        
+      const element = document.querySelector(`#${sectionId}`) as HTMLElement;
+      if (!element) return;
+
+      // Use the same logic as desktop: find section wrapper and calculate position
+      const sectionWrapper = element.closest('.scroll-reveal-section') as HTMLElement;
+      if (!sectionWrapper) {
+        // Fallback: use direct element position
+        const rect = element.getBoundingClientRect();
+        const offset = 80;
+        const targetScroll = rect.top + window.pageYOffset - offset;
         window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+        return;
       }
+
+      // Calculate position using offsetTop (like desktop does)
+      const sectionPosition = sectionWrapper.offsetTop;
+      const offset = 80; // Navbar offset
+      const targetScroll = Math.max(0, sectionPosition - offset);
+      
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth',
+      });
     } else {
       // On desktop, scroll the container
       const scrollContainer = scrollContainerRef?.current || document.querySelector('.overflow-y-auto.fixed.right-0') as HTMLElement;

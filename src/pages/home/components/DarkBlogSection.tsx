@@ -11,9 +11,9 @@ export default function DarkBlogSection() {
         <div className="space-y-8">
           <div className="bg-dark-lighter rounded-2xl p-8 md:p-12 border border-dark-border">
             <p className="text-sm md:text-xl text-gray-300 leading-relaxed max-w-4xl">
-              Senior DevOps Engineer and Cloud Architect specializing in Kubernetes, CI/CD, and infrastructure as code. 
-              Building GitOps workflows, autoscaling systems, and observability platforms for scalable operations. 
-              Focused on reliability, security, and cost optimization.
+              I'm <strong>Suhried Datta</strong>, a Senior DevOps Engineer, Site Reliability Engineer (SRE), and Cloud Infrastructure Architect based in Bangladesh. 
+              With over 4 years of experience, I specialize in building scalable cloud infrastructure, automating CI/CD pipelines, and implementing Kubernetes-based container orchestration solutions. 
+              As one of the leading DevOps engineers in Bangladesh, I help organizations achieve high availability, reliability, and cost optimization through modern cloud practices.
             </p>
           </div>
 

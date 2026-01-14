@@ -18,7 +18,7 @@ export default function NewHeroSection() {
             <div className="absolute inset-0 bg-[#8B4513] opacity-30 z-10"></div>
             <img
               src={profileImage}
-              alt="Suhried Datta"
+              alt="Suhried Datta - Best DevOps Engineer & SRE in Bangladesh, Cloud Infrastructure Architect"
               className="w-full h-[320px] md:h-[340px] object-cover object-top relative z-0"
             />
           </div>
@@ -27,7 +27,7 @@ export default function NewHeroSection() {
           <div className="text-center mb-4 md:mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-1 md:mb-2">Suhried Datta</h3>
             <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-              Senior DevOps Engineer & Cloud Architect
+              Senior DevOps Engineer, SRE & Cloud Infrastructure Architect
             </p>
           </div>
 

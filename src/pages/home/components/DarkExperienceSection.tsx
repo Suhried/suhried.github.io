@@ -2,7 +2,7 @@ export default function DarkExperienceSection() {
   const experiences = [
     {
       company: 'Senior DevOps Engineer – Next Ventures (FundedNext)',
-      description: 'Architected and maintained Kubernetes-based infrastructure on AWS EKS, implementing GitOps workflows and observability platforms.',
+      description: 'Architected and maintained Kubernetes-based infrastructure on AWS EKS, implementing GitOps workflows and observability platforms. Leading DevOps and SRE practices for scalable cloud infrastructure.',
       period: 'Current',
       bullets: [
         'Designed and deployed AWS EKS clusters with Docker containerization, implementing GitOps workflows using ArgoCD for declarative infrastructure management',

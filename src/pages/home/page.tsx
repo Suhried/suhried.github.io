@@ -92,7 +92,7 @@ export default function HomePage() {
                   msOverflowStyle: 'none',
                 }}
               >
-                <div className="pt-8 md:pt-10 pb-32 pr-2">
+                <div className="pt-8 md:pt-10 pb-20 pr-2">
                   {/* Hero Content Section - First visible section */}
                   <div className="scroll-reveal-section">
                     <HeroContentSection />
@@ -119,7 +119,7 @@ export default function HomePage() {
                     <DarkContactSection />
                   </div>
                   
-                  <div className="scroll-reveal-section">
+                  <div>
                     <DarkFooter />
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
             </div>
 
             {/* Scrollable Sections */}
-            <div className="space-y-32 pb-32">
+            <div className="space-y-32 pb-12">
               <div className="scroll-reveal-section">
                 <DarkBlogSection />
               </div>
@@ -158,7 +158,7 @@ export default function HomePage() {
                 <DarkContactSection />
               </div>
               
-              <div className="scroll-reveal-section">
+              <div>
                 <DarkFooter />
               </div>
             </div>

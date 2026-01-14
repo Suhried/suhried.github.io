@@ -48,8 +48,8 @@ export default function HeroContentSection() {
             <span className="text-[#6A6A6A]">ARCHITECT</span>
           </h1>
           <p className="text-sm md:text-xl text-[#9A9A9A] leading-relaxed max-w-[500px] mb-6">
-            Building scalable platforms, automating and <br />
-            architecting cloud infrastructure at scale
+            Building scalable cloud platforms, automating DevOps workflows, and <br />
+            architecting resilient cloud infrastructure at scale. Expert DevOps Engineer, SRE, and Cloud Infrastructure Architect in Bangladesh.
           </p>
         </div>
 
